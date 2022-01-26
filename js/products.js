@@ -18,17 +18,32 @@ const products = [
 const container = document.querySelector(".container");
 console.log(container);
 
-const myProductName = product.name;
-const MyProductPrice = product.price;
-const IsMyProductSoldOut = product.soldOut ? "" : "";
+const myProductsName = products.name;
+const MyProductsPrice = products.price;
+const IsMyProductsSoldOut = products.soldOut ? "" : "";
 
-container.innerHTML = `<h4 style ="`
-
-
+let html = "";
 
 
-//for (let i = 0; i < products.length; i++) {
-   // console.log(products[i]);
-//}
 
+for (let i = 0; i < products.length; i++) {
 
+    let showPrice = "no money";
+    if (products[i].price) {
+        showPrice = products[i].price;
+    }
+    let colour = "green";
+
+    if(products[i].soldOut === false) {
+        colour = "red";
+    }
+
+    html += `<div class = "product">
+        <h2 style=" color: ${colour}">${products[i].name}</h2>
+            <p>price: ${showPrice}</p>
+            </div>`;
+
+    console.log(html);
+}
+
+container.innerHTML = html;
